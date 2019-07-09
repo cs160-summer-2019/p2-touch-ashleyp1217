@@ -85,6 +85,67 @@
 	</div>
 	<script>
 	  // your solution here
+    //Rotate
+    var box_rot = document.getElementById('rotate-box');
+    var mc_rotate = new Hammer.Manager(box_rot, {
+      recognizers:[
+        [Hammer.Rotate]
+      ]
+    });
+    mc_rotate.on("rotate", function(ev_rotate) {
+    box_rot.textContent = "Rotated!";
+});
+    
+//Pinch
+    var box_pinch = document.getElementById('pinch-box');
+    var mc_pinch = new Hammer.Manager(box_pinch, {
+      recognizers:[
+        [Hammer.Pinch]
+      ]
+    });
+    mc_pinch.on("pinch", function(ev_pinch){
+      box_pinch.textContent = "Pinched!";
+    });
+    
+    
+//Press
+    var box_press = document.getElementById('press-box');
+    var mc_press = new Hammer.Manager(box_press,{
+      recognizers:[
+        [Hammer.Press]
+      ]
+    });
+    mc_press.on("press",function(ev_press){
+      box_press.textContent = "Pressed!";
+    });
+    
+
+    
+//Pan
+    var box_pan = document.getElementById('pan-box');
+    var mc_pan = new Hammer(box_pan);
+    mc_pan.get('pan').set({direction: Hammer.DIRECTION_ALL});
+    mc_pan.on("panleft panright pan up pandown", function(ev_pan){
+      box_pan.textContent = ev_pan.type+" completed!";
+    });
+    
+    
+    
+//Tap
+    var box_tap = document.getElementById('tap-box');
+    var mc_tap = new Hammer(box_tap);
+    mc_tap.on('tap press', function(ev_tap){
+      box_tap.textContent = "Tapped!";
+    });
+
+    
+//Swipe
+    var box_swipe = document.getElementById('swipe-box');
+    var mc_swipe = new Hammer(box_swipe);
+    mc_swipe.on('swipe', function(ev_swipe){
+      box_swipe.textContent = "Swiped!";
+    });
+    
   </script>
 </body>
 </html>
